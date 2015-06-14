@@ -1,0 +1,76 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix r2h: <http://rdf2h.github.io/2015/rdf2h#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/>.
+@prefix s: <https://schema.org/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+<page> a r2h:Matcher ;
+  r2h:triplePattern [    
+    r2h:subject r2h:this;
+    r2h:predicate s:headline;
+  ];
+  r2h:template [ 
+    r2h:context r2h:Default;
+    r2h:mustache '''
+    <head>
+      <title>{{s:headline}}</title>
+    </head>
+    <body>
+        <h1>{{s:headline}}</h1>
+        <p>{{{s:text}}}</p>
+
+        <p>Created by:<br/>
+        <span resource="https://farewellutopia.com/me" class="render">Reto from local RDF should appear here</span></p>
+        <p>With the help of:<br/>
+        <span resource="https://www.bergnet.org/people/bergi/card#me" class="fetch">Bergi from remote RDF should appear here</span>
+        </p>
+        <p>On the web invented by:<br/>
+        <span resource="https://www.w3.org/People/Berners-Lee/card#i" class="fetch">TimBL from remote RDF should appear here</span>
+        </p>
+    </body>
+'''
+  ];
+  r2h:before <title>.
+
+<title> a r2h:Matcher ;
+  r2h:triplePattern [    
+    r2h:subject r2h:this;
+    r2h:predicate dc:title;
+  ];
+  r2h:template [ 
+    r2h:context r2h:Default;
+    r2h:mustache '''<h2>{{dc:title}}</h2>
+        {{{:continue}}}'''
+  ];
+  r2h:before <label>.
+
+<label> a r2h:Matcher ;
+  r2h:triplePattern [    
+    r2h:subject r2h:this;
+    r2h:predicate rdfs:label;
+  ];
+  r2h:template [ 
+    r2h:context r2h:Default;
+    r2h:mustache '''Label: {{rdfs:label}}<br/>
+         {{{:continue}}}'''
+  ];
+  r2h:before <catchall>.
+          
+<name> a r2h:Matcher ;
+  r2h:triplePattern [    
+    r2h:subject r2h:this;
+    r2h:predicate foaf:name;
+  ];
+  r2h:template [ 
+    r2h:context r2h:Default;
+    r2h:mustache '''Name: {{foaf:name}}<br/>
+         {{{:continue}}}'''
+  ];
+  r2h:before <label>.  
+
+<catchall> a r2h:Matcher ;
+  r2h:template [ 
+    r2h:context r2h:Default;
+    r2h:mustache "<!-- no (more) template for {{{.}}} -->"
+  ].  
