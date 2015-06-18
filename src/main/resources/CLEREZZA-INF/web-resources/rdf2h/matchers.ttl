@@ -90,7 +90,13 @@ r2h:before <title>.
            if (s.length === 0) continue;
            renderedNodesToId[node.toString()] = true;
            result += '<table id="'+node+'" class="table table-bordered">';
-           result += '<thead><tr><th colspan="2">subject: '+node+'</th></tr>';
+           result += '<thead><tr><th colspan="2">subject: ';
+           if (node.toString().split('#')[0] == window.location.toString().split('#')[0]) {
+             result += '<span id="'+node.toString().split('#')[1]+'">'+node+'</span>';
+           } else {
+             result += node;
+           }
+           result += '</th></tr>';
            result += '<tr>';
            result += '<th style="width:50%;">predicate</th>';
            result += '<th>object</th></tr></thead>';
