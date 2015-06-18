@@ -1,0 +1,8 @@
+target/
+.scala_dependencies
+.settings
+.cache
+.project
+.classpath
+dependency-reduced-pom.xml
+release.properties
