@@ -1,0 +1,27 @@
+Manifest-Version: 1.0
+Bnd-LastModified: 1434616143870
+Build-Jdk: 1.8.0_45
+Built-By: developer
+Bundle-ManifestVersion: 2
+Bundle-Name: zz2h
+Bundle-SymbolicName: org.zazukoians.zz2h
+Bundle-Version: 1.0.0.SNAPSHOT
+Created-By: Apache Maven Bundle Plugin
+Export-Package: org.zazukoians.zz2h.style;version="1.0.0";uses:="javax.w
+ s.rs.core,org.apache.clerezza.commons.rdf,org.apache.clerezza.platform.
+ typerendering,org.apache.clerezza.platform.typerendering.scala,org.apac
+ he.clerezza.rdf.scala.utils,org.apache.clerezza.rdf.utils,scala,scala.r
+ eflect,scala.xml"
+Import-Package: javax.ws.rs.core;version="[1,3)",org.apache.clerezza.com
+ mons.rdf,org.apache.clerezza.platform.typerendering,org.apache.clerezza
+ .platform.typerendering.scala,org.apache.clerezza.rdf.ontologies,org.ap
+ ache.clerezza.rdf.scala.utils,org.apache.clerezza.rdf.utils,scala;versi
+ on="[2.11,3)",scala.collection;version="[2.11,3)",scala.collection.immu
+ table;version="[2.11,3)",scala.collection.mutable;version="[2.11,3)",sc
+ ala.reflect;version="[2.11,3)",scala.xml;version="[1.0,2)"
+Provide-Capability: osgi.service;effective:=active;objectClass="org.apac
+ he.clerezza.platform.typerendering.TypeRenderlet"
+Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.6))"
+Service-Component: OSGI-INF/org.zazukoians.zz2h.style.ResourceRenderlet.
+ xml
+Tool: Bnd-2.4.1.201501161923

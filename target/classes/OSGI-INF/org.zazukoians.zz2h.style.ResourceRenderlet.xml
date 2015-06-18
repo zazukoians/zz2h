@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.0.0" name="org.zazukoians.zz2h.style.ResourceRenderlet">
+    <implementation class="org.zazukoians.zz2h.style.ResourceRenderlet"/>
+    <service servicefactory="false">
+        <provide interface="org.apache.clerezza.platform.typerendering.TypeRenderlet"/>
+    </service>
+</scr:component>
