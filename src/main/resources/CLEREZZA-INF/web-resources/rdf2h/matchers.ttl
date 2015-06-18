@@ -96,11 +96,20 @@ r2h:before <title>.
            result += '<th>object</th></tr></thead>';
            result += '<tbody>';
            s.forEach(function(t) {
-            result += '<tr><td>'+t.predicate+'</td><td>'+t.object+'</td></tr>';
+            var objectHtml;
             if ((t.object.interfaceName != "Literal") && (!renderedNodesToId[t.object.toString()])) {
                 nodesToRender.push(t.object);
+                if (t.object.interfaceName == "BlankNode") {
+                    objectHtml = '<a onclick=\\'$("#'+t.object+'")[0].scrollIntoView( true );\\'>'+t.object+'</a>';
+                } else {
+                    objectHtml = '<a href="'+t.object+'">'+t.object+'</a>';
+                }
+                
+            } else {
+                objectHtml = t.object;
             }
-            //nodesToRender
+            result += '<tr><td>'+t.predicate+'</td><td>'+objectHtml+'</td></tr>';
+            
            });
            result += '</tbody>';
            result += '</table>';
