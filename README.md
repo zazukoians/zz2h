@@ -1,4 +1,4 @@
-# ZZ2H
+# ZZ2h
 
 RDF2h rendering and LD2h embedding for Apache Clerezza.
 

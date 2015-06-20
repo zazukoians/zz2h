@@ -88,6 +88,7 @@ r2h:before <title>.
            var node = nodesToRender.pop();
            var s = n.graph.filter(function(t) {return t.subject.equals(node)}).toArray();
            if (s.length === 0) continue;
+           if (renderedNodesToId[node.toString()]) continue;
            renderedNodesToId[node.toString()] = true;
            result += '<table id="'+node+'" class="table table-bordered">';
            result += '<thead><tr><th colspan="2">subject: ';
