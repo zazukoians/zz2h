@@ -2,8 +2,10 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix r2h: <http://rdf2h.github.io/2015/rdf2h#> .
 @prefix dc: <http://purl.org/dc/elements/1.1/>.
-@prefix s: <https://schema.org/>.
+@prefix s: <http://schema.org/>.
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix zzm: <http://zz2h.zazukoinas.org/modes/> .
+@prefix zz2h: <http://zz2h.zazukoinas.org/ontology/> .
 
 <page> a r2h:Matcher ;
   r2h:triplePattern [    
@@ -11,7 +13,7 @@
     r2h:predicate s:headline;
   ];
   r2h:template [ 
-    r2h:context r2h:Default;
+    r2h:context zzm:FullPage;
     r2h:mustache '''
     <head>
       <title>{{s:headline}}</title>
@@ -25,7 +27,7 @@
 
 <genericFrame> a r2h:Matcher ;  
   r2h:template [ 
-    r2h:context r2h:Default;
+    r2h:context zzm:FullPage;
     r2h:mustache '''
     <head>
       <link rel="stylesheet" href="/css/bootstrap.css" />
@@ -50,15 +52,80 @@ r2h:before <title>.
   ];
   r2h:before <label>.
 
-<label> a r2h:Matcher ;
+<title> a r2h:Matcher ;
   r2h:triplePattern [    
     r2h:subject r2h:this;
-    r2h:predicate rdfs:label;
+    r2h:predicate dc:title;
   ];
   r2h:template [ 
     r2h:context r2h:Default;
-    r2h:mustache '''Label: {{rdfs:label}}<br/>
+    r2h:mustache '''<h2>{{dc:title}}</h2>
+        {{{:continue}}}'''
+  ];
+  r2h:before <label>.
+
+
+<headline> a r2h:Matcher ;
+  r2h:triplePattern [    
+    r2h:subject r2h:this;
+    r2h:predicate s:headline;
+  ];
+  r2h:template [ 
+    r2h:context r2h:Default;
+    r2h:mustache '''<h1>{{s:headline}}</h1>
          {{{:continue}}}'''
+  ];
+  r2h:before <matcherEdit>.
+
+<matcherEdit> a r2h:Matcher ;
+  r2h:triplePattern [    
+    r2h:subject r2h:this;
+    r2h:predicate zz2h:matcherGraph;
+  ];
+  r2h:template [ 
+    r2h:context r2h:Default;
+    r2h:mustache '''{{{@prefix zz2h: <http://zz2h.zazukoinas.org/ontology/>}}}
+         <div id="matcherEditor"></div>
+         <script id="editorLoader">
+             var store = new rdf.LdpStore({parsers: {
+                            'text/turtle': rdf.parseTurtle }
+                        });
+             store.match("{{{zz2h:matcherGraph}}}",
+                                null,
+                                null,
+                                null,
+                                function (data, error) {
+                                    if (!data) {
+                                        console.warn("Couldn't get any triple. reason: "+error);
+                                        return;
+                                    }
+                                    console.log("Got graph of size "+data.length);
+                                    var editors = new Object();
+                                    editors["turtle"] = function() {
+                                        //debugger;
+                                        var html = '&lt;textarea id="matcherGraph">&lt;/textarea>';
+                                        $("#matcherEditor").html(html);
+                                        rdf.serializeTurtle(data, function(turtle) {
+                                            $("#matcherGraph").val(turtle);
+                                        });
+                                    };
+                                    editors["turtle"]();
+                                    //debugger;
+                                });
+             /*$.ajax({
+                url : "{{{zz2h:matcherGraph}}}",
+                dataType: "text",
+                success : function (data) {
+                    rdf.parseTurtle(data, function (data) {
+                        console.log(data.toString());
+                        callback(data);
+                    }, window.location.toString().split('#')[0]);
+                    $("#matcherGraph").val(data);
+                }
+            });*/
+         </script>
+         {{{:continue}}}
+    '''
   ];
   r2h:before <catchall>.
           
@@ -70,6 +137,18 @@ r2h:before <title>.
   r2h:template [ 
     r2h:context r2h:Default;
     r2h:mustache '''Name: {{foaf:name}}<br/>
+         {{{:continue}}}'''
+  ];
+  r2h:before <label>.  
+
+<address> a r2h:Matcher ;
+  r2h:triplePattern [    
+    r2h:subject r2h:this;
+    r2h:predicate s:address;
+  ];
+  r2h:template [ 
+    r2h:context r2h:Default;
+    r2h:mustache '''Address: {{{:render s:address}}}<br/>
          {{{:continue}}}'''
   ];
   r2h:before <label>.  
@@ -113,6 +192,7 @@ r2h:before <title>.
                 }
                 
             } else {
+                //debugger;
                 objectHtml = t.object;
             }
             result += '<tr><td>'+t.predicate+'</td><td>'+objectHtml+'</td></tr>';

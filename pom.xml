@@ -46,6 +46,11 @@
         </dependency>
         <dependency>
             <groupId>org.apache.clerezza</groupId>
+            <artifactId>jaxrs.utils</artifactId>
+            <version>0.9</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.clerezza</groupId>
             <artifactId>osgi.services</artifactId>
             <version>0.2</version>
         </dependency>

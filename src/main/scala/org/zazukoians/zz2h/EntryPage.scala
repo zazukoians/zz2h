@@ -35,6 +35,14 @@ class EntryPage {
   val henryUri: String = "http://bblfish.net/#hjs"
   val retoUri: String = "http://farewellutopia.com/reto/#me"
   val danbriUri: String = "http://danbri.org/foaf.rdf#danbri"
+  
+  def schema(localName: String) = {
+    ("http://schema.org/"+localName).iri
+  }
+  
+  def zz2h(localName: String) = {
+    ("http://zz2h.zazukoinas.org/ontology/"+localName).iri
+  }
 
   @GET
   def hello(@Context uriInfo: UriInfo) =
@@ -42,6 +50,11 @@ class EntryPage {
       val resource = uriInfo.getRequestUri().toString().iri;
       val g = new EzGraph() {
         (
+          resource.a(schema("WebPage")) -- schema("headline") --> "zz2h".lang("en")
+          -- zz2h("matcherGraph")  --> (uriInfo.getBaseUri.toString + "zz2h/matchers").iri
+         )
+        /*(
+       
           resource.a(FOAF.Person) -- FOAF.name --> "Reto Gmür".lang("rm")
           -- FOAF.title --> "Mr"
           -- FOAF.currentProject --> "http://clerezza.org/".iri
@@ -63,7 +76,7 @@ class EntryPage {
                 -- FOAF.knows --> "http://bblfish.net/#hjs".iri //knows
                 -- FOAF.knows --> b_("reto")
               )
-        )
+        )*/
       }
       new GraphNode(resource,g)
     }

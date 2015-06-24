@@ -33,7 +33,7 @@ class ResourceRenderlet extends SRenderlet {
         <html xmlns="http://www.w3.org/1999/xhtml" class="fetch" resource="">
           <head>
             <title>{"A Resource" + (res*)}</title>
-            <link rel="matchers" href="/rdf2h/matchers.ttl" type="text/turtle" />
+            <link rel="matchers" href="/zz2h/matchers" type="text/turtle" />
             <script src="/js/ld2h/js/libs/rdf2h/rdf2h.js"></script>
             <script src="/js/ld2h/js/libs/jquery/jquery.min.js"></script>
             <script src="/js/ld2h/js/ld2h.js"></script>        
