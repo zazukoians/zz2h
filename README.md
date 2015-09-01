@@ -7,6 +7,10 @@ RDF2h rendering and LD2h embedding for Apache Clerezza.
 This projects provides a  bundle to render resources served by Clerezza 
 using RDF2h templates.
 
+## Getting the source
+
+Use the `--recursive`option when cloning the repo to make sure you also get submodules.
+
 ## Compiling
 
 You need Apache Maven and Java 8. Compile with:
