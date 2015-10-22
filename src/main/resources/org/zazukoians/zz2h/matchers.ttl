@@ -16,10 +16,11 @@
     r2h:context zzm:FullPage;
     r2h:mustache '''
     <head>
-      <title>{{s:headline}}</title>
+      <title>sss: {{s:headline}}</title>
+      <script src="/js/edit-graph.js"></script>
     </head>
     <body>
-        {{{:continue}}}
+        {{{:continue r2h:Default}}}
     </body>
 '''
   ];
@@ -34,7 +35,7 @@
       <title>Resource {{.}}</title>
     </head>
     <body>
-        {{{:continue}}}
+        {{{:continue r2h:Default}}}
     </body>
 '''
   ];

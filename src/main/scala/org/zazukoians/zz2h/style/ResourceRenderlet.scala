@@ -30,7 +30,7 @@ class ResourceRenderlet extends SRenderlet {
           <a href={ href }>{ label }</a>
         }
       override def content = {
-        <html xmlns="http://www.w3.org/1999/xhtml" class="fetch" resource="">
+        <html xmlns="http://www.w3.org/1999/xhtml" class="fetch" resource="" context="http://zz2h.zazukoinas.org/modes/FullPage">
           <head>
             <title>{"A Resource" + (res*)}</title>
             <link rel="matchers" href="/zz2h/matchers" type="text/turtle" />
