@@ -15,11 +15,6 @@
             <version>5.0.0</version>
         </dependency>
         <dependency>
-            <groupId>org.osgi</groupId>
-            <artifactId>org.osgi.core</artifactId>
-            <version>6.0.0</version>
-        </dependency>
-        <dependency>
             <groupId>org.apache.clerezza</groupId>
             <artifactId>platform.typerendering.core</artifactId>
             <version>1.0.0</version>
@@ -48,11 +43,6 @@
             <groupId>org.apache.clerezza</groupId>
             <artifactId>jaxrs.utils</artifactId>
             <version>0.9</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.clerezza</groupId>
-            <artifactId>osgi.services</artifactId>
-            <version>0.2</version>
         </dependency>
         <dependency>
             <groupId>org.scala-lang</groupId>
