@@ -1,4 +1,4 @@
-[submodule "bundle/src/main/resources/CLEREZZA-INF/web-resources/js/ld2h"]
-	path = bundle/src/main/resources/CLEREZZA-INF/web-resources/js/ld2h
+[submodule "core/src/main/resources/CLEREZZA-INF/web-resources/js/ld2h"]
+	path = core/src/main/resources/CLEREZZA-INF/web-resources/js/ld2h
 	url = https://github.com/rdf2h/ld2h.git
 	branch = gh-pages
