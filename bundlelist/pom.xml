@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+ Licensed to the Apache Software Foundation (ASF) under one
+ or more contributor license agreements.  See the NOTICE file
+ distributed with this work for additional information
+ regarding copyright ownership.  The ASF licenses this file
+ to you under the Apache License, Version 2.0 (the
+ "License"); you may not use this file except in compliance
+ with the License.  You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing,
+ software distributed under the License is distributed on an
+ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ KIND, either express or implied.  See the License for the
+ specific language governing permissions and limitations
+ under the License.
+
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.zazukoians.zz2h</groupId>
+    <artifactId>bundlelist</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <name>zz2 - BundleList</name>
+    <packaging>feature</packaging>
+    <description>A Karaf feature and partialbundlelist
+    </description>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.zazukoians.zz2h</groupId>
+            <artifactId>core</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.stanbol</groupId>
+            <artifactId>org.apache.stanbol.commons.web.resources</artifactId>
+            <version>0.12.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.clerezza</groupId>
+            <artifactId>platform.xhtml2html</artifactId>
+            <version>0.6</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.clerezza.commons-rdf</groupId>
+            <artifactId>commons-rdf-impl-sparql</artifactId>
+            <version>0.2</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.wymiwyg.karaf.tooling</groupId>
+                <artifactId>karaf-sling-maven-plugin</artifactId>
+                <version>3.0.1</version>
+                <extensions>true</extensions>
+                <executions>
+                    <execution>
+                        <id>default-features-generate-descriptor</id>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>features-generate-descriptor</goal>
+                        </goals>
+                        <configuration>
+                            <startLevel>25</startLevel>
+                            <aggregateFeatures>true</aggregateFeatures>
+                            <resolver>(obr)</resolver>
+                            <checkDependencyChange>false</checkDependencyChange>
+                            <includeTransitiveDependency>false</includeTransitiveDependency>
+                            <createSlingPartialBundleList>true</createSlingPartialBundleList>
+                        </configuration>
+                    </execution>
+                </executions>
+                <configuration>
+                    <!-- setting early startlevel as the scr version compatibel 
+                    with sling launcher doesn't inject late components -->
+                    <startLevel>20</startLevel>
+                    <aggregateFeatures>true</aggregateFeatures>
+                    <resolver>(obr)</resolver>
+                    <checkDependencyChange>false</checkDependencyChange>
+                    <includeTransitiveDependency>false</includeTransitiveDependency>
+                    <createSlingPartialBundleList>true</createSlingPartialBundleList>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    
+</project>
