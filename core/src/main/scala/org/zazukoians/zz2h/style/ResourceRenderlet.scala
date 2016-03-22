@@ -34,17 +34,20 @@ class ResourceRenderlet extends SRenderlet {
           <head>
             <title>{"A Resource" + (res*)}</title>
             <link rel="matchers" href="/zz2h/matchers" type="text/turtle" />
-            <script src="/js/ld2h/js/libs/rdf2h/rdf2h.js"></script>
-            <script src="/js/ld2h/js/libs/jquery/jquery.min.js"></script>
-            <script src="/js/ld2h/js/ld2h.js"></script>        
+            <script src="//cdn.rawgit.com/rdf2h/rdf2h/v0.2.1/dist/rdf-ext.js"></script>
+            <!-- <script src="//cdn.rawgit.com/retog/clownface-browser/v0.3.0-rc2/dist/clownface.js"></script> -->
+            <script src="//cdn.rawgit.com/rdf2h/rdf2h/v0.3.0/dist/rdf2h.js"></script>
+            <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+            <script src="//cdn.rawgit.com/retog/rdf-store-ldp-browser/v0.3.0-rc2f/dist/rdf-store-ldp.js"></script>
+            <script src="//cdn.rawgit.com/rdf2h/ld2h/v0.2.0/dist/ld2h.js"></script>      
             <script type="text/javascript">
 $(function () {{
-   var store = new rdf.LdpStore({{parsers: {{
+   /*var store = new LdpStore({{parsers: {{
        //'application/ld+json': rdf.parseJsonLd,
        //'application/n-triples': rdf.parseTurtle,
        'text/turtle': rdf.parseTurtle
    }}}});
-   LD2h.store = store;
+   LD2h.store = store;*/
    LD2h.expand();
 }});
             </script>

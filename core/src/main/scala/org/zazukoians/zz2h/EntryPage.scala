@@ -78,7 +78,8 @@ class EntryPage {
               )
         )*/
       }
-      new GraphNode(resource,g)
+      val node = new GraphNode(resource,g)
+      Response.ok(node).header("Vary", "Accept").build();
     }
 
   //"hello "+uriInfo.getRequestUri().toString();
