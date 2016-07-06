@@ -24,7 +24,7 @@
     <groupId>org.zazukoians.zz2h</groupId>
     <artifactId>bundlelist</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <name>zz2 - BundleList</name>
+    <name>zz2h - BundleList</name>
     <packaging>feature</packaging>
     <description>A Karaf feature and partialbundlelist
     </description>
