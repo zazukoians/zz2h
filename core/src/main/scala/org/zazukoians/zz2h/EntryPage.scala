@@ -45,7 +45,13 @@ class EntryPage {
   }
 
   @GET
-  def hello(@Context uriInfo: UriInfo) =
+  @Path("hello")
+  def hello() = {
+    "Hello: "+ ConfigDirProvider.configDir;
+  }
+  
+  @GET
+  def webpage(@Context uriInfo: UriInfo) =
     {
       val resource = uriInfo.getRequestUri().toString().iri;
       val g = new EzGraph() {

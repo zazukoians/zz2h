@@ -16,6 +16,16 @@
             <version>5.0.0</version>
         </dependency>
         <dependency>
+            <groupId>org.apache.clerezza.commons-rdf</groupId>
+            <artifactId>commons-rdf-api</artifactId>
+            <version>0.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.clerezza.commons-rdf</groupId>
+            <artifactId>commons-rdf-impl-sparql</artifactId>
+            <version>0.2</version>
+        </dependency>
+        <dependency>
             <groupId>org.apache.clerezza</groupId>
             <artifactId>platform.typerendering.core</artifactId>
             <version>1.0.0</version>
@@ -59,6 +69,11 @@
             <groupId>javax.ws.rs</groupId>
             <artifactId>javax.ws.rs-api</artifactId>
             <version>2.0.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.clerezza</groupId>
+            <artifactId>platform.typehandlerspace</artifactId>
+            <version>1.0.0</version>
         </dependency>
     </dependencies>
     <build>

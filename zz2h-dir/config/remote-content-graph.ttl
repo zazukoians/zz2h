@@ -1,0 +1,6 @@
+<http://lindas-data.ch/sparql>
+        a       <http://sparql.endpoint/> ;
+        <http://example.org/replacement> [
+        <http://example.org/targetPrefix> "http://localhost:8080/"; 
+        <http://example.org/sourcePrefix> "http://data.admin.ch/"
+    ] .
