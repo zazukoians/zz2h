@@ -1,4 +1,4 @@
-package eu.fusepool.p3.entry
+package org.zazukoians.zz2h
 
 import javax.ws.rs.core.Response
 import javax.ws.rs.core.UriInfo
@@ -13,7 +13,7 @@ import javax.ws.rs.core._
 //@SupportedTypes(types = { Array("http://www.w3.org/2000/01/rdf-schema#Resource") }, prioritize = false)
 @Component(service = Array(classOf[Object]), property = Array("javax.ws.rs=true"))
 @Path("")
-class P3TypeHandler {
+class RootResource {
 
   var gnp: GraphNodeProvider = null
   
@@ -31,7 +31,11 @@ class P3TypeHandler {
   }
   @GET
   @Path("{path: .*}")
-  def get(@Context uriInfo: UriInfo) = {
+  def get(@Context uriInfo: UriInfo) : Response = {
+    /*val static = ConfigDirProvider.publicNode.getSubPath(path); 
+    if (static.exists) {
+      throw new RuntimeException("hooray: "+path);
+    }*/
     //set vary: Accept header
     Response.ok({
         val iri : IRI = new IRI(uriInfo.getAbsolutePath().toString());

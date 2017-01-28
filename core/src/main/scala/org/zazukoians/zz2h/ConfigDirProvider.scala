@@ -20,20 +20,16 @@ object ConfigDirProvider {
   }
   
   def configDir = new File(zz2hDir, "config/");
+  
+  def publicDir = new File(zz2hDir, "public/");
 
-  private def systemConfigDir = new File("/etc/fusepool-p3/");
   
   def configNode = {
-    val nodes = new scala.collection.mutable.ListBuffer[PathNode]
-    if (!configDir.exists()) {
-      configDir.mkdirs();
-    }
-    val userConfigNode: PathNode =new FilePathNode(configDir);
-    nodes += userConfigNode;
-    /*if (systemConfigDir.exists()) {
-      val systemConfigNode: PathNode =new FilePathNode(systemConfigDir);
-      nodes += systemConfigNode;
-    }*/
-    new MultiPathNode(nodes.toList:_*);
+    new FilePathNode(configDir);
   }
+  
+  def publicNode = {
+    new FilePathNode(publicDir);
+  }
+  
 }

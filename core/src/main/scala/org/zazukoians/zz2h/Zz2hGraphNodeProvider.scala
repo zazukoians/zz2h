@@ -26,7 +26,7 @@ import org.osgi.service.component.annotations.ReferencePolicy
 
 
 @Component(service = Array(classOf[GraphNodeProvider]), immediate = true)
-class P3GraphNodeProvider extends GraphNodeProvider {
+class Zz2hGraphNodeProvider extends GraphNodeProvider {
 
   var g: Graph = new EzGraph() {
       val iri = "http://localhost:8080/foo".iri;
@@ -53,6 +53,7 @@ class P3GraphNodeProvider extends GraphNodeProvider {
   @Activate
   def activate(context: ComponentContext) {
     val cgRemoteFile = ConfigDirProvider.configNode.getSubPath("remote-content-graph.ttl")
+    println("******************************  "+cgRemoteFile);
     if (cgRemoteFile.exists) {
       val locationG = parser.parse(cgRemoteFile.getInputStream, SupportedFormat.TURTLE)
       val p = new Preamble(locationG)
